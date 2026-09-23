@@ -1,13 +1,21 @@
 package com.citizen.controller;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.citizen.dto.CitizenRequest;
 import com.citizen.dto.CitizenResponse;
+import com.citizen.model.CitizenEntity;
 import com.citizen.service.CitizenService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,10 +28,21 @@ public class CitizenController {
 
     private final CitizenService citizenService;
 
-    @GetMapping("") 
+    @GetMapping("/page") 
     public Page<CitizenResponse> getCitizens(
                 @RequestParam(name = "page" , defaultValue = "0")   int page, 
                 @RequestParam(name = "size", defaultValue = "10")  int size){
         return citizenService.getCitizens(page, size);
+    }
+
+    @PostMapping("/create")
+    public CitizenResponse createCitizen(@RequestBody CitizenRequest citizenRequest) {
+        // Logic to create a new citizen using the citizenService
+        return citizenService.createCitizen(citizenRequest);
+    }
+    
+    @GetMapping("")
+    public CitizenResponse getCitizen(@RequestParam(name = "citizenid") String citizenuuid) {
+		return citizenService.getCitizen(citizenuuid);
     }
 }

@@ -19,3 +19,11 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false # recommended: false for production
+
+logging:
+  level:
+    org.hibernate.SQL: TRACE
+    org.hibernate.orm.jdbc.bind: TRACE
+    org.hibernate.orm.query.sqm.ast: TRACE
+    org.hibernate.orm.sql.ast: TRACE
+    org.hibernate.orm.sql.exec: TRACE
