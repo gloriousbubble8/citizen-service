@@ -1,8 +1,5 @@
 package com.citizen.controller;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.citizen.dto.CitizenRequest;
 import com.citizen.dto.CitizenResponse;
-import com.citizen.model.CitizenEntity;
 import com.citizen.service.CitizenService;
 
 import lombok.RequiredArgsConstructor;
