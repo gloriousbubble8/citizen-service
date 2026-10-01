@@ -39,4 +39,10 @@ public class KafkaConsumer {
     public void listen6(ConsumerRecord<String,String> consumerRecord) {
         log.info("Consumer 6 Listened");
     }
+
+    @KafkaListener(topics = { "topic-2" }, groupId = "group-1")
+    public void listen7(ConsumerRecord<String,String> consumerRecord) {
+        log.info("Consumer 7 Listened");
+    }
+
 }
